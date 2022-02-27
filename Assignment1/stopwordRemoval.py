@@ -2,7 +2,7 @@ from util import *
 
 # Add your import statements here
 
-
+from nltk.corpus import stopwords
 
 
 class StopwordRemoval():
@@ -24,13 +24,8 @@ class StopwordRemoval():
 			representing a sentence with stopwords removed
 		"""
 
-		stopwordRemovedText = None
-
-		#Fill in code here
+		stopwordRemovedText = []
+		sw = stopwords.words('English')
+		stopwordRemovedText = [[word for word in sentence if word not in sw] for sentence in text]
 
 		return stopwordRemovedText
-
-
-
-
-	

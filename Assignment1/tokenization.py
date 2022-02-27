@@ -1,7 +1,7 @@
 from util import *
 
 # Add your import statements here
-
+import re
 
 
 
@@ -22,13 +22,13 @@ class Tokenization():
 			A list of lists where each sub-list is a sequence of tokens
 		"""
 
-		tokenizedText = None
+		tokenizedText = [[] for i in range(len(text))]
 
 		#Fill in code here
-
+		for i,sentence in enumerate(text):
+			sentence = re.sub('\'|\"|\(|\)|,|;|\[|\]|\{|\}|\.|\?|!', ' ', sentence).strip()
+			tokenizedText[i] = sentence.split()
 		return tokenizedText
-
-
 
 	def pennTreeBank(self, text):
 		"""
@@ -47,6 +47,7 @@ class Tokenization():
 
 		tokenizedText = None
 
-		#Fill in code here
-
 		return tokenizedText
+
+# txt = ["nlp,(txt) 'lol' \"lmao\" [asdasd]{asda}]} "]
+# print(Tokenization().naive(txt))

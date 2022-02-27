@@ -20,7 +20,7 @@ class SentenceSegmentation():
 		list
 			A list of strings where each string is a single sentence
 		"""
-
+		
 		segmentedText = re.split('\.\s|\?\s|!\s',text)
 		segmentedText[-1] = segmentedText[-1][:-1] if (segmentedText[-1][-1] == '.' or segmentedText[-1][-1] == ',' or segmentedText[-1][-1] == '!') else segmentedText[-1]
 		return segmentedText
