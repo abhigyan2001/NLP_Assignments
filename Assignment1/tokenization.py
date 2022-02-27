@@ -1,8 +1,10 @@
 from util import *
 
 # Add your import statements here
-
-
+import re
+import string 
+import nltk
+from nltk.tokenize import TreebankWordTokenizer
 
 
 class Tokenization():
@@ -22,11 +24,27 @@ class Tokenization():
 			A list of lists where each sub-list is a sequence of tokens
 		"""
 
-		tokenizedText = None
+		   	#text is a list
+		    	tokenizedText = []
 
-		#Fill in code here
+			#Fill in code here
 
-		return tokenizedText
+			#string punctuation '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
+			sent_list_cleaned = []
+			for i in range(len(text)):
+			    txt = text[i] #access individual string (sentence)
+			    txt = re.sub(r"'", "", txt) #remove "'" and join both the words. prandtl's -> prandtls
+			    txt = re.sub(r"[^a-zA-Z0-9.=()-]", " ", txt) #remove all punctuation except, letters, numbers, '.', '=', '()' and '-'. Replace with ' '
+			    txt = re.sub(r"\s{2,}", " ", txt) #remove all spaces >= 2
+			    txt = txt.replace(' .', '') #replace ' .' with ''
+			    sent_list_cleaned.append(txt)
+
+			for j in range(len(sent_list_cleaned)):
+			    #input cleaned list of sentences
+			    tokens = sent_list_cleaned[j].split(' ')
+			    tokenizedText += tokens
+
+			return tokenizedText
 
 
 
@@ -45,8 +63,13 @@ class Tokenization():
 			A list of lists where each sub-list is a sequence of tokens
 		"""
 
-		tokenizedText = None
 
-		#Fill in code here
+		    #Fill in code here
+		    penn_tokenizer = TreebankWordTokenizer()
 
-		return tokenizedText
+		    for i in range(len(text)):
+			#input cleaned list of sentences
+			tokens = penn_tokenizer.tokenize(text[i])
+			tokenizedText.append(tokens)
+
+		    return tokenizedText
