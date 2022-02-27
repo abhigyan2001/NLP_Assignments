@@ -1,8 +1,7 @@
 from util import *
 
 # Add your import statements here
-
-
+import re
 
 
 class SentenceSegmentation():
@@ -22,9 +21,7 @@ class SentenceSegmentation():
 			A list of strings where each string is a single sentence
 		"""
 
-		segmentedText = None
-
-		#Fill in code here
+		segmentedText = re.split('.\s|!\s|?\s',text)
 
 		return segmentedText
 
