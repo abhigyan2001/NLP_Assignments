@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from sentenceSegmentation import SentenceSegmentation
 from tokenization import Tokenization
 from inflectionReduction import InflectionReduction
@@ -187,7 +188,8 @@ if __name__ == "__main__":
 	
 	# Parse the input arguments
 	args = parser.parse_args()
-
+	args.dataset = args.dataset+"/" if args.dataset[-1]!='/' else args.dataset
+	args.out_folder = args.out_folder+"/" if args.out_folder[-1]!='/' else args.out_folder
 	# Create an instance of the Search Engine
 	searchEngine = SearchEngine(args)
 
