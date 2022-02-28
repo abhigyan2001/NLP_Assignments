@@ -23,9 +23,7 @@ class StopwordRemoval():
 			A list of lists where each sub-list is a sequence of tokens
 			representing a sentence with stopwords removed
 		"""
-
-		stopwordRemovedText = []
-		sw = stopwords.words('English')
+		sw = stopwords.words('english')
 		stopwordRemovedText = [[word for word in sentence if word not in sw] for sentence in text]
 
 		return stopwordRemovedText

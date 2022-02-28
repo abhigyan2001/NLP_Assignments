@@ -2,7 +2,7 @@ from util import *
 
 # Add your import statements here
 from nltk.stem.snowball import SnowballStemmer
-  
+import nltk
 #the stemmer requires a language parameter
 snow_stemmer = SnowballStemmer(language='english')
 
@@ -29,16 +29,21 @@ class InflectionReduction:
 			stemmed/lemmatized tokens representing a sentence
 		"""
 
-		reducedText = [[0 for j in range(len(text[i]))] for i in range(len(text))]
 		
-		reducedText2 = [[0 for j in range(len(text[i]))] for i in range(len(text))]
-		#Fill in code here
-		for i,sentence in enumerate(text):
-			for j,word in enumerate(sentence):
-				#reducedText[i][j] = ps.stem(word)
-				reducedText2[i][j] = snow_stemmer.stem(word)
+		# Using Lemmatizer
 
-		return reducedText,reducedText2
+		lemmatizer = nltk.stem.WordNetLemmatizer()
+		return [lemmatizer.lemmatize(w,'v') for w in text]
+		
+
+		# Using Stemming, uncomment to use
+		
+		#reducedText = [[0 for j in range(len(text[i]))] for i in range(len(text))]
+		#for i,sentence in enumerate(text):
+		#	for j,word in enumerate(sentence):
+		#		#reducedText[i][j] = ps.stem(word) # Using Porter Stemmer
+		#		reducedText[i][j] = snow_stemmer.stem(word)
+		#return reducedText
 
 # choose some words to be stemmed
 # words = [["program", "programs"],["programmer","teeth"], ["leaves","fairly","frankly","children","programming", "programmers"]]

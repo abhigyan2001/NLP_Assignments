@@ -31,7 +31,7 @@ class Tokenization():
 		for i in range(len(text)):
 			txt = text[i] #access individual string (sentence)
 			txt = re.sub(r"'", "", txt) #remove "'" and join both the words. prandtl's -> prandtls
-			txt = re.sub(r"[^a-zA-Z0-9.=()-+]", " ", txt) #remove all punctuation except, letters, numbers, '.', '=', '()' and '-'. Replace with ' '
+			txt = re.sub(r"[^a-zA-Z0-9.=-+]", " ", txt) #remove all punctuation except, letters, numbers, '.', '=', '()' and '-'. Replace with ' '
 			txt = re.sub(r"\s{2,}", " ", txt) #remove all spaces >= 2
 			#txt = txt.replace(' .', '') #replace ' .' with ''
 			sent_list_cleaned.append(txt)
