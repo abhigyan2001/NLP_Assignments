@@ -90,7 +90,6 @@ class SearchEngine:
 			stopwordRemovedQuery = self.removeStopwords(query)
 			stopwordRemovedQueries.append(stopwordRemovedQuery)
 		json.dump(stopwordRemovedQueries, open(self.args.out_folder + "stopword_removed_queries.txt", 'w'))
-		print(stopwordRemovedQueries[59])
 		preprocessedQueries = stopwordRemovedQueries
 		return preprocessedQueries
 
