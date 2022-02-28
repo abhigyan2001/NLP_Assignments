@@ -32,18 +32,18 @@ class InflectionReduction:
 		
 		# Using Lemmatizer
 
-		lemmatizer = nltk.stem.WordNetLemmatizer()
-		return [lemmatizer.lemmatize(w,'v') for w in text]
+		#lemmatizer = nltk.stem.WordNetLemmatizer()
+		#return [lemmatizer.lemmatize(w,'v') for w in text]
 		
 
-		# Using Stemming, uncomment to use
+		# Using Stemming
 		
-		#reducedText = [[0 for j in range(len(text[i]))] for i in range(len(text))]
-		#for i,sentence in enumerate(text):
-		#	for j,word in enumerate(sentence):
-		#		#reducedText[i][j] = ps.stem(word) # Using Porter Stemmer
-		#		reducedText[i][j] = snow_stemmer.stem(word)
-		#return reducedText
+		reducedText = [[0 for j in range(len(text[i]))] for i in range(len(text))]
+		for i,sentence in enumerate(text):
+			for j,word in enumerate(sentence):
+				#reducedText[i][j] = ps.stem(word) # Using Porter Stemmer
+				reducedText[i][j] = snow_stemmer.stem(word) # Using Snowball Stemmer
+		return reducedText
 
 # choose some words to be stemmed
 # words = [["program", "programs"],["programmer","teeth"], ["leaves","fairly","frankly","children","programming", "programmers"]]
